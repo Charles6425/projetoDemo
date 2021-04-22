@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="81de7e86-5208-4488-bb43-67d4bb5004a9">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="595"/>
+	<queryString>
+		<![CDATA[SELECT
+cad_geral.id,
+cad_geral.dt_nascimento,
+cad_geral.nome_aluno,
+cad_geral.rg_aluno,
+cad_geral.rg_mae,
+cad_geral.rgm_aluno,
+cad_geral.responsavel,
+cad_geral.cod_endereco,
+entrevista_aluno.id ,
+entrevista_aluno.id_aluno,
+entrevista_aluno.id_empresa ,
+entrevista_aluno.data_entrevista ,
+entrevista_aluno.horario_entrevista,
+ce.id,
+ce.razao ,
+ce.contato ,
+ce.cnpj ,
+ce.cod_endereco as cod_end_empresa ,
+ce.numero as num_empresa,
+ce.complemento,
+cad_end.end_codigo ,
+cad_end.end_cep ,
+cad_end.end_logradouro rua_aluno,
+cad_end.end_bairro as bairro_aluno ,
+cad_end.end_cidade as cid_aluno,
+cad_end.end_uf as uf_aluno,
+cad_end1.end_codigo ,
+cad_end1.end_cep ,
+cad_end1.end_logradouro rua_emp,
+cad_end1.end_bairro as bairro_emp,
+cad_end1.end_cidade as cid_emp,
+cad_end1.end_uf as uf_emp,
+h.descricao as horario,
+curso.curso,
+cbo.descricao as cbo
+FROM
+cad_geral LEFT JOIN entrevista_aluno on cad_geral.id = entrevista_aluno.id_aluno
+LEFT join cad_empresa ce on ce.id = entrevista_aluno.id_empresa
+LEFT join cad_endereco cad_end on cad_end.end_codigo = cad_geral.cod_endereco
+LEFT join cad_endereco cad_end1 on cad_end1.end_codigo = ce.cod_endereco
+LEFT JOIN horario h on cad_geral.horario = h.id
+left join qual_curso curso on cad_geral.curso = curso.id
+left join cad_cbo cbo on cad_geral.cbo = cbo.id]]>
+	</queryString>
+	<field name="id" class="java.lang.Long">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="dt_nascimento" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nome_aluno" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="rg_aluno" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="rg_mae" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="rgm_aluno" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="responsavel" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="cod_endereco" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="id_aluno" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="id_empresa" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="data_entrevista" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="horario_entrevista" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="razao" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="contato" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="cnpj" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="cod_end_empresa" class="java.lang.Integer"/>
+	<field name="num_empresa" class="java.lang.String"/>
+	<field name="complemento" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="end_codigo" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="end_cep" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="rua_aluno" class="java.lang.String"/>
+	<field name="bairro_aluno" class="java.lang.String"/>
+	<field name="cid_aluno" class="java.lang.String"/>
+	<field name="uf_aluno" class="java.lang.String"/>
+	<field name="rua_emp" class="java.lang.String"/>
+	<field name="bairro_emp" class="java.lang.String"/>
+	<field name="cid_emp" class="java.lang.String"/>
+	<field name="uf_emp" class="java.lang.String"/>
+	<field name="horario" class="java.lang.String"/>
+	<field name="curso" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="cbo" class="java.lang.String"/>
+	<variable name="IDADE" class="java.lang.String">
+		<initialValueExpression><![CDATA[$F{dt_nascimento}]]></initialValueExpression>
+	</variable>
+	<title>
+		<band height="40" splitType="Stretch">
+			<image>
+				<reportElement x="0" y="0" width="108" height="40" uuid="ff1310c2-3961-4074-a6f1-98fb17e29c19"/>
+				<imageExpression><![CDATA["C:\\GMS\\imagens\\LOGO GMS.jpg"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="25" splitType="Stretch">
+			<staticText>
+				<reportElement x="108" y="0" width="246" height="25" uuid="e601d0ad-50a2-481b-8de8-de14b0313133"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CONTRATO DE APRENDIZAGEM Nº ]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="592" splitType="Stretch">
+			<staticText>
+				<reportElement x="16" y="0" width="555" height="93" uuid="e5e01b4d-28bf-442c-a131-57e3fdc5e8b1"/>
+				<text><![CDATA[Guarda Mirim de Suzano, estabelecida nesta Cidade à Rua Shimpei Sayama, 304 – JD. Santa Lúcia, neste ato 
+representado por Natal José Francisco, Presidente da Diretoria Executiva, doravante denominada empregadora 
+e o (a) jovem                                                                                                     
+portador (a) do RG:                     RGM                nascido (a) em                    doravante denominado (a) empregado 
+(a), assistido (a) por seu responsável legal, Sr.(a)
+portador (a) do RG                     justo e contratado o presente contrato de trabalho de aprendizagem, 
+que se regerá pelas cláusulas seguintes: não temos nenhum impedimento. ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="77" y="25" width="242" height="20" uuid="a2a8638c-80e4-42a6-ab6c-f30e59ec70a1"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nome_aluno}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="156" y="169" width="345" height="20" uuid="9c37dd6e-d9b0-4b01-b797-a14b34dbef33"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{razao}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="92" y="193" width="365" height="20" uuid="d202561a-a2e3-4953-b17c-c227a30d2885"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rua_emp} +", "+ $F{num_empresa}+","+$F{bairro_emp}+","+$F{cid_emp}+","+$F{uf_emp}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="296" y="38" width="59" height="20" uuid="b8bf2ced-1946-4aab-9ad4-481882cc0691"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{dt_nascimento}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="103" y="37" width="100" height="20" uuid="0dd3c3dd-07c3-42fd-aa71-5e8eb2bf4073"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rg_aluno}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="187" y="37" width="56" height="20" uuid="2de821be-7dcc-4e8f-8889-fc20b318a627"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rgm_aluno}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="236" y="51" width="224" height="20" uuid="4c56db31-77b5-4562-814e-4c7455dc6d5f"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{responsavel}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="101" y="63" width="100" height="20" uuid="d72fc658-bb55-470d-96ae-4bacc9cb8b96"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rg_mae}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="16" y="93" width="539" height="130" uuid="01f955dd-0a83-45a7-a41d-5ae2816803c7"/>
+				<text><![CDATA[1º - A empregadora admite o (a) empregado (a) mencionado (a) aos seus serviços, obrigando-se a submetê-lo (a) 
+à formação profissional metódica na função de aprendiz no CBO 
+cadastrado no MTE (Ministério do Trabalho e Emprego), e com a Portaria 634 de 2018, descrição das atividades conforme o Catálogo Nacional de Aprendizagem: executam serviços de apoio nas áreas de recursos humanos, administração, finanças e logística; atendem fornecedores e clientes, fornecendo e recebendo informações sobre produtos e serviços; tratam de documentos variados, cumprindo todo o procedimento necessário referente aos mesmos.
+Fica locado junto a conveniada
+inscrita no CNPJ                                    
+estabelecida em 
+onde realizará a aprendizagem prática das 13h às 17h de segunda à sexta, totalizando 1440h de contrato.
+
+]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="94" y="181" width="100" height="20" uuid="c208322f-11d8-44b1-bbca-d25329fac70d"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cnpj}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="16" y="222" width="539" height="53" uuid="8da7149d-e4e2-43ba-95b6-fcea21821586"/>
+				<text><![CDATA[2º - A aprendizagem teórica será realizada através da Guarda Mirim de Suzano, nesta Cidade à Rua Tiradentes, 79 – Centro, 
+no curso de Arco Ocupacional de                                                                                , com carga teórica de 440h, 
+sendo em um dia da semana estabelecido previamente das                       , de acordo com o programa de aprendizagem.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="16" y="275" width="539" height="46" uuid="db860cbf-6b54-47e3-b6ae-7eb48b100589"/>
+				<text><![CDATA[3º - O presente contrato terá início em 16 de Março de 2020 e término 15 de Fevereiro de 2022, com a jornada diária de 4h e 20h semanais, será anotado na Carteira de Trabalho e Previdência Social do aprendiz, em obediência ao disposto no artigo 428 da CLT.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="16" y="321" width="539" height="40" uuid="3ec6a92f-b8a2-4d87-9a3e-0f4a10726d0f"/>
+				<text><![CDATA[4º - De acordo com o Decreto Federal nº 9579/18, o (a) empregado (a) não receberá remuneração inferior ao salário mínimo hora trabalhada R$ 6,53 (Seis reais e cinquenta e três centavos), além dos depósitos de encargos sociais, inclusive o FGTS de 2%.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="16" y="363" width="539" height="48" uuid="69ec71cd-38cf-47d3-a6ff-ce7ad0b467e1"/>
+				<text><![CDATA[5º - O aprendiz se obriga a cumprir, com exatidão, o horário de aprendizagem prática e teórica, a executar com lealdade suas funções, obedecendo às instruções e normas internas do empregador inclusive uso do uniforme, comprometendo-se, principalmente, a seguir o regime de aprendizagem que lhe for estabelecido, visando ao máximo de aproveitamento.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="16" y="413" width="539" height="54" uuid="0d7cbe06-e0e3-4d53-89b5-6882226bd928"/>
+				<text><![CDATA[6º - Fica estabelecida que constituam para a rescisão do presente contrato, pela empregadora, a prática de qualquer dos atos mencionados no artigo 71 do decreto 9579/2018 pelo empregado, bem como o desrespeito a qualquer das cláusulas aqui expressas do presente Contrato.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="16" y="469" width="539" height="57" uuid="d55c7252-b4ee-4694-80b6-5c6093724a84"/>
+				<text><![CDATA[7º - Do mesmo modo, o (a) empregado (a) poderá considerar rescindido o presente contrato, na prática pela empregadora, de qualquer dos atos mencionados no artigo 483 da CLT.
+E por estarem, assim, justos e contratados, assinam o presente contrato em 4 vias de igual teor, na presença das duas testemunhas que a seguir assinam com os contratados e o responsável legal do jovem.
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="16" y="525" width="539" height="66" uuid="853e828c-303f-4a7c-a942-fa13695fe663"/>
+				<text><![CDATA[
+ 
+
+ Rebeca Maria Batalha                                Aprendiz (Nome por extenso)                         Responsável Legal
+Coordenadora Administrativa
+]]></text>
+			</staticText>
+			<image>
+				<reportElement x="16" y="528" width="160" height="33" uuid="5843a63c-8104-459d-8b25-906992e55f78"/>
+				<imageExpression><![CDATA["C:\\GMS\\imagens\\ass rebeca.png"]]></imageExpression>
+			</image>
+			<line>
+				<reportElement x="16" y="561" width="126" height="1" uuid="cfda6232-a7c5-488b-99ea-62f0647e0040"/>
+			</line>
+			<line>
+				<reportElement x="201" y="560" width="118" height="1" uuid="0c56c658-0e34-4b0e-a119-61c897e864ad"/>
+			</line>
+			<line>
+				<reportElement x="390" y="559" width="100" height="1" uuid="937b9dad-2a4b-448c-9c9e-130bb39282d3"/>
+			</line>
+			<textField>
+				<reportElement x="280" y="261" width="56" height="20" uuid="c906c3e0-b40c-46fa-97e1-f9648245d39a"/>
+				<textFieldExpression><![CDATA[$F{horario}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="165" y="248" width="211" height="20" uuid="6533d74f-7178-4b4f-917a-f72ab381735f"/>
+				<textFieldExpression><![CDATA[$F{cbo}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
+	<pageFooter>
+		<band height="47" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="7" width="555" height="40" uuid="e96c621d-d725-4407-b486-15ae2ceeef9b"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Guarda Mirim de Suzano
+www.gmsuzano.org.br
+Rua Shimpei Sayama nº 304- Jd Santa Lucia - Fone/Fax (11) 4748-4911 - 4748-6477]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+</jasperReport>

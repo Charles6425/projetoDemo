@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="81de7e86-5208-4488-bb43-67d4bb5004a9">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[SELECT
+     cad_geral.`id`,
+     cad_geral.`nome_aluno`,
+     cad_geral.`cod_endereco`,
+     cad_geral.`rgm_aluno`,
+     cad_geral.`dt_nascimento`,
+     motivo_advertencia.`id` as `id_motivo`,
+     motivo_advertencia.`motivo`,
+     motivo_advertencia.`data`
+    
+FROM
+      cad_geral inner join motivo_advertencia on cad_geral.id = motivo_advertencia.id_aluno]]>
+	</queryString>
+	<field name="id" class="java.lang.Long">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nome_aluno" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="cod_endereco" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="rgm_aluno" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="dt_nascimento" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="id_motivo" class="java.lang.Integer"/>
+	<field name="motivo" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="data" class="java.sql.Timestamp">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="122" splitType="Stretch">
+			<image>
+				<reportElement x="0" y="0" width="227" height="95" uuid="ff1310c2-3961-4074-a6f1-98fb17e29c19"/>
+				<imageExpression><![CDATA["C:\\GMS\\imagens\\LOGO GMS.jpg"]]></imageExpression>
+			</image>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="330" y="102" width="225" height="20" uuid="a60ea608-d850-468c-817a-57011197923a"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="62" splitType="Stretch">
+			<staticText>
+				<reportElement x="96" y="37" width="370" height="25" uuid="e601d0ad-50a2-481b-8de8-de14b0313133"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Advertência Disciplinar - Aprendiz Guarda Mirim]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="375" splitType="Stretch">
+			<staticText>
+				<reportElement x="147" y="16" width="264" height="20" uuid="e5e01b4d-28bf-442c-a131-57e3fdc5e8b1"/>
+				<text><![CDATA[Tipo de Advertência ( ) No Trabalho ou na ( ) Entidade]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="41" y="78" width="21" height="20" uuid="9d45cc20-c983-4286-8502-9c9e3b4eeb31"/>
+				<text><![CDATA[às]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="166" y="58" width="192" height="20" uuid="a2a8638c-80e4-42a6-ab6c-f30e59ec70a1"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nome_aluno}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="96" y="78" width="165" height="20" uuid="f2254cd7-8c31-4b2d-aa51-33de96391d0b"/>
+				<text><![CDATA[pelo motivo descrito abaixo:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="121" y="162" width="297" height="69" uuid="361db33b-6777-47aa-ad26-5c44cf2f08d9"/>
+				<text><![CDATA[Relembramos que:
+• 1ª Sanção: Advertência verbal e por escrito;
+• 2ª Sanção: Suspensão do Trabalho com desconto do dia;
+• 3ª Sanção: Exclusão do Programa de Aprendizagem]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="389" y="58" width="100" height="20" uuid="d1779efd-8ea4-41f3-bece-a312da0050d8"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rgm_aluno}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="358" y="58" width="31" height="20" uuid="a5fcbc31-9977-4b4b-9822-44f0662cd6f6"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[RGM]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="262" width="203" height="34" uuid="cfcfc5c1-86bf-427b-bd90-92828f433355"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[________________________________
+Jovem ou Responsável]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="356" y="262" width="203" height="34" uuid="bf96bcf0-50cd-45cc-bddf-10f4b6cb65e5"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[________________________________
+Responsável pela Advertência]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="168" y="341" width="203" height="34" uuid="20f2dec0-7bf4-404e-9a4a-be4d98e162dc"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[________________________________
+Testemunha]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="3" y="129" width="552" height="33" uuid="7364e7ce-ec31-4310-a976-ee41dca574e9"/>
+				<textFieldExpression><![CDATA[$F{motivo}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="96" y="58" width="70" height="20" uuid="4efc2efa-5b3d-4c9d-9b29-7b9cfb17f39c"/>
+				<text><![CDATA[Guarda Mirim:]]></text>
+			</staticText>
+			<textField pattern="HH:mm">
+				<reportElement x="62" y="78" width="34" height="20" uuid="924ec8fd-4112-4142-a07f-e57767678d26"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
+	<pageFooter>
+		<band height="103" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="555" height="63" uuid="e96c621d-d725-4407-b486-15ae2ceeef9b"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Guarda Mirim de Suzano
+www.gmsuzano.org.br
+Rua Shimpei Sayama nº 304- Jd Santa Lucia - Fone/Fax (11) 4748-4911 - 4748-6477]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+</jasperReport>

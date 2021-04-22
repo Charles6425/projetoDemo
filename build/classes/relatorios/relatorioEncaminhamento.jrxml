@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="81de7e86-5208-4488-bb43-67d4bb5004a9">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="11"/>
+	<queryString>
+		<![CDATA[SELECT
+cad_geral.id,
+cad_geral.dt_nascimento,
+cad_geral.nome_aluno,
+cad_geral.cod_endereco,
+entrevista_aluno.id ,
+entrevista_aluno.id_aluno,
+entrevista_aluno.id_empresa ,
+entrevista_aluno.data_entrevista ,
+entrevista_aluno.horario_entrevista,
+ce.id,
+ce.razao ,
+ce.contato ,
+ce.cod_endereco as cod_end_empresa ,
+ce.numero as num_empresa,
+ce.complemento,
+cad_end.end_codigo ,
+cad_end.end_cep ,
+cad_end.end_logradouro rua_aluno,
+cad_end.end_bairro as bairro_aluno ,
+cad_end.end_cidade as cid_aluno,
+cad_end.end_uf as uf_aluno,
+cad_end1.end_codigo ,
+cad_end1.end_cep ,
+cad_end1.end_logradouro rua_emp,
+cad_end1.end_bairro as bairro_emp,
+cad_end1.end_cidade as cid_emp,
+cad_end1.end_uf as uf_emp 
+FROM
+cad_geral LEFT JOIN entrevista_aluno on cad_geral.id = entrevista_aluno.id_aluno
+LEFT join cad_empresa ce on ce.id = entrevista_aluno.id_empresa
+LEFT join cad_endereco cad_end on cad_end.end_codigo = cad_geral.cod_endereco
+LEFT join cad_endereco cad_end1 on cad_end1.end_codigo = ce.cod_endereco]]>
+	</queryString>
+	<field name="id" class="java.lang.Long">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="dt_nascimento" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nome_aluno" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="cod_endereco" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="id_aluno" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="id_empresa" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="data_entrevista" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="horario_entrevista" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="razao" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="contato" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="cod_end_empresa" class="java.lang.Integer"/>
+	<field name="num_empresa" class="java.lang.String"/>
+	<field name="complemento" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="end_codigo" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="end_cep" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="rua_aluno" class="java.lang.String"/>
+	<field name="bairro_aluno" class="java.lang.String"/>
+	<field name="cid_aluno" class="java.lang.String"/>
+	<field name="uf_aluno" class="java.lang.String"/>
+	<field name="rua_emp" class="java.lang.String"/>
+	<field name="bairro_emp" class="java.lang.String"/>
+	<field name="cid_emp" class="java.lang.String"/>
+	<field name="uf_emp" class="java.lang.String"/>
+	<variable name="IDADE" class="java.lang.String">
+		<initialValueExpression><![CDATA[$F{dt_nascimento}]]></initialValueExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="95" splitType="Stretch">
+			<image>
+				<reportElement x="0" y="0" width="227" height="95" uuid="ff1310c2-3961-4074-a6f1-98fb17e29c19"/>
+				<imageExpression><![CDATA["C:\\GMS\\imagens\\LOGO GMS.jpg"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="39" splitType="Stretch">
+			<staticText>
+				<reportElement x="211" y="0" width="143" height="25" uuid="e601d0ad-50a2-481b-8de8-de14b0313133"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ENCAMINHAMENTO]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="375" splitType="Stretch">
+			<staticText>
+				<reportElement x="41" y="0" width="211" height="20" uuid="e5e01b4d-28bf-442c-a131-57e3fdc5e8b1"/>
+				<text><![CDATA[Encaminhamos para avaliação o (a) aprendiz]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="41" y="20" width="71" height="20" uuid="084b0ceb-3a0b-499a-b2a9-b497515a989b"/>
+				<text><![CDATA[Nascido no dia]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="164" y="20" width="100" height="20" uuid="ed245502-599a-439a-9551-6d68e19df0ba"/>
+				<text><![CDATA[residente no bairro]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="59" y="101" width="59" height="20" uuid="9d45cc20-c983-4286-8502-9c9e3b4eeb31"/>
+				<text><![CDATA[À empresa]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="59" y="121" width="111" height="20" uuid="b0689fef-0213-40ca-82c7-b32c2ba51f34"/>
+				<text><![CDATA[Localizada no endereço]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="59" y="141" width="79" height="20" uuid="3b2284a9-fec4-4705-9a5a-7ad73940a7b4"/>
+				<text><![CDATA[Procurar por]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="59" y="161" width="18" height="20" uuid="09e0d194-5271-48d1-86ad-ceba292765f2"/>
+				<text><![CDATA[Dia]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="129" y="161" width="13" height="20" uuid="cd40c39b-68b4-42d9-8294-e7ee0e0735a1"/>
+				<text><![CDATA[às]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="171" y="161" width="36" height="20" uuid="2c33669e-7ddb-442f-8436-300c42fa30c6"/>
+				<text><![CDATA[horas]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="234" width="555" height="139" uuid="def33449-ae8a-444f-b1ee-8ca626360aba"/>
+				<textElement>
+					<font size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[             MEDIANTE APROVAÇÃO DO (A) CANDIDATO (A), DERECIONÁ-LO PARA A INSTITUIÇÃO 
+                       PARA QUE ASSIM POSSAMOS DAR CONTINUIDADE AO PROCESSO
+
+                      POR FAVOR, PROTOCOLAR A 2ª VIA E DEVOLVER AO CANDIDATO (A).
+                                                                                         
+                                                                                                            
+
+                                                                                                         Guarda Mirim de Suzano
+
+
+
+																]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="252" y="0" width="303" height="20" uuid="a2a8638c-80e4-42a6-ab6c-f30e59ec70a1"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nome_aluno}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="253" y="20" width="266" height="20" uuid="f1726abc-595d-48d7-8b57-d79388b11966"/>
+				<textElement>
+					<font isUnderline="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{bairro_aluno}+", "+$F{cid_aluno}+" - "+$F{uf_aluno}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="118" y="101" width="417" height="20" uuid="9c37dd6e-d9b0-4b01-b797-a14b34dbef33"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{razao}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="120" y="141" width="415" height="20" uuid="25ee2dc5-b0aa-44c7-9637-b7bca8404fe5"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{contato}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="76" y="161" width="54" height="20" uuid="a78fe355-51b5-4c59-a52a-79987c6b5c3d"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{data_entrevista}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="144" y="161" width="30" height="20" uuid="ce27f75f-1743-40d5-85c1-e08abe92e0ba"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{horario_entrevista}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="170" y="121" width="365" height="20" uuid="d202561a-a2e3-4953-b17c-c227a30d2885"/>
+				<textFieldExpression><![CDATA[$F{rua_emp} +", "+ $F{num_empresa}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="111" y="20" width="59" height="20" uuid="b8bf2ced-1946-4aab-9ad4-481882cc0691"/>
+				<textFieldExpression><![CDATA[$F{dt_nascimento}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
+	<pageFooter>
+		<band height="103" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="555" height="63" uuid="e96c621d-d725-4407-b486-15ae2ceeef9b"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Guarda Mirim de Suzano
+www.gmsuzano.org.br
+Rua Shimpei Sayama nº 304- Jd Santa Lucia - Fone/Fax (11) 4748-4911 - 4748-6477]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+</jasperReport>

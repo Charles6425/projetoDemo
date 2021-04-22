@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="81de7e86-5208-4488-bb43-67d4bb5004a9">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[SELECT
+cad_geral.id,
+cad_geral.dt_nascimento,
+cad_geral.nome_aluno,
+cad_geral.rg_aluno,
+cad_geral.rg_mae,
+cad_geral.rgm_aluno,
+cad_geral.responsavel,
+cad_geral.cod_endereco,
+cad_sala.descricao as sala,
+cad_turma.descricao as turma,
+empresa_aluno.id ,
+empresa_aluno.id_aluno,
+empresa_aluno.id_empresa ,
+empresa_aluno.data_inicio ,
+empresa_aluno.data_termino,
+ce.id,
+ce.razao ,
+ce.contato ,
+ce.cnpj ,
+ce.cod_endereco as cod_end_empresa ,
+ce.numero as num_empresa,
+ce.complemento,
+cad_end.end_codigo ,
+cad_end.end_cep ,
+cad_end.end_logradouro rua_aluno,
+cad_end.end_bairro as bairro_aluno ,
+cad_end.end_cidade as cid_aluno,
+cad_end.end_uf as uf_aluno,
+cad_end1.end_codigo ,
+cad_end1.end_cep ,
+cad_end1.end_logradouro rua_emp,
+cad_end1.end_bairro as bairro_emp,
+cad_end1.end_cidade as cid_emp,
+cad_end1.end_uf as uf_emp,
+h.descricao as horario,
+curso.curso,
+cbo.descricao as cbo
+FROM
+cad_geral LEFT JOIN empresa_aluno on cad_geral.id = empresa_aluno.id_aluno
+LEFT join cad_empresa ce on ce.id = empresa_aluno.id_empresa
+LEFT join cad_endereco cad_end on cad_end.end_codigo = cad_geral.cod_endereco
+LEFT join cad_endereco cad_end1 on cad_end1.end_codigo = ce.cod_endereco
+LEFT JOIN horario h on cad_geral.horario = h.id
+left join qual_curso curso on cad_geral.curso = curso.id
+left join cad_cbo cbo on cad_geral.cbo = cbo.id left join cad_sala on cad_geral.sala = cad_sala.id
+left join cad_turma on cad_geral.sala = cad_turma.id]]>
+	</queryString>
+	<field name="id" class="java.lang.Long">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="dt_nascimento" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nome_aluno" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="rg_aluno" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="rg_mae" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="rgm_aluno" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="responsavel" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="cod_endereco" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="sala" class="java.lang.String"/>
+	<field name="turma" class="java.lang.String"/>
+	<field name="id_aluno" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="id_empresa" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="data_inicio" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="data_termino" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="razao" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="contato" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="cnpj" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="cod_end_empresa" class="java.lang.Integer"/>
+	<field name="num_empresa" class="java.lang.String"/>
+	<field name="complemento" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="end_codigo" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="end_cep" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="rua_aluno" class="java.lang.String"/>
+	<field name="bairro_aluno" class="java.lang.String"/>
+	<field name="cid_aluno" class="java.lang.String"/>
+	<field name="uf_aluno" class="java.lang.String"/>
+	<field name="rua_emp" class="java.lang.String"/>
+	<field name="bairro_emp" class="java.lang.String"/>
+	<field name="cid_emp" class="java.lang.String"/>
+	<field name="uf_emp" class="java.lang.String"/>
+	<field name="horario" class="java.lang.String"/>
+	<field name="curso" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="cbo" class="java.lang.String"/>
+	<variable name="IDADE" class="java.lang.String">
+		<initialValueExpression><![CDATA[$F{dt_nascimento}]]></initialValueExpression>
+	</variable>
+	<title>
+		<band height="48" splitType="Stretch">
+			<image>
+				<reportElement x="0" y="8" width="108" height="40" uuid="ff1310c2-3961-4074-a6f1-98fb17e29c19"/>
+				<imageExpression><![CDATA["C:\\GMS\\imagens\\LOGO GMS.jpg"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="37" splitType="Stretch">
+			<staticText>
+				<reportElement x="220" y="0" width="119" height="37" uuid="3dd76453-a0d5-4f6c-9159-7edfbf74f8ea"/>
+				<textElement>
+					<font size="18" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Ocorrências]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="43" splitType="Stretch">
+			<staticText>
+				<reportElement x="35" y="0" width="85" height="20" uuid="226dcc24-1859-4fdb-b933-3e353f568799"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nome]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="417" y="0" width="38" height="20" uuid="74dbde72-cd4f-4976-8660-bd3edded7a58"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Sala]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="467" y="0" width="53" height="20" uuid="b67611c8-76d5-4486-bb3f-19a33045964a"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Turma]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="467" y="19" width="53" height="20" uuid="4169bbf8-0926-4570-974c-61dce24eac62"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{turma}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="417" y="19" width="38" height="20" uuid="e711841f-28b7-404f-aa2a-4879b2315bc7"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{sala}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="362" y="19" width="41" height="20" uuid="2de821be-7dcc-4e8f-8889-fc20b318a627"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rgm_aluno}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="362" y="0" width="41" height="20" uuid="3c06e727-803d-4b0e-bc9f-170c6775f682"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[RGM]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="35" y="19" width="208" height="20" uuid="a2a8638c-80e4-42a6-ab6c-f30e59ec70a1"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nome_aluno}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="136">
+			<rectangle>
+				<reportElement x="21" y="27" width="516" height="20" uuid="b5455cce-37b3-4945-876f-7e9b2ebfd404"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="21" y="51" width="516" height="20" uuid="ded4f6c5-8d1b-45c3-9cdf-25c516ea839f"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="21" y="75" width="516" height="20" uuid="5e32b0f9-823f-49b9-92fb-1e5c5e2531cd"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="20" y="7" width="143" height="20" uuid="d1bda2cc-326f-484f-874b-1a6f1cbd0b6f"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Data ____/____/____/]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="303" y="106" width="46" height="20" uuid="e55bba3c-d6a2-4973-8bea-b64692ad94b4"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Ciente:]]></text>
+			</staticText>
+			<line>
+				<reportElement x="349" y="116" width="188" height="1" uuid="28c36c5c-4581-47fb-80ce-0f1533d9b183"/>
+			</line>
+		</band>
+	</detail>
+</jasperReport>

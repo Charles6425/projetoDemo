@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="81de7e86-5208-4488-bb43-67d4bb5004a9">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[SELECT
+cg.id,
+cg.nome_aluno,
+cg.rg_aluno,
+cg.rgm_aluno,
+cg.dt_admissao,
+cg.dt_rescisao,
+
+qc.curso,
+cg.carga_horaria_total,
+cbo.descricao as cbo,
+emp.razao as empresa,
+ht.descricao as horario
+   
+FROM
+      cad_geral cg left join cad_empresa  emp on cg.empresa = emp.id
+      left join cad_cbo cbo on cg.cbo = cbo.id left join qual_curso qc on cg.curso = qc.id
+      left join horario_trabalhado ht on cg.horario = ht.id]]>
+	</queryString>
+	<field name="id" class="java.lang.Long">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nome_aluno" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="rg_aluno" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="rgm_aluno" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="dt_admissao" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="dt_rescisao" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="curso" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="carga_horaria_total" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="cbo" class="java.lang.String"/>
+	<field name="empresa" class="java.lang.String"/>
+	<field name="horario" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="51" splitType="Stretch">
+			<image>
+				<reportElement x="219" y="0" width="107" height="46" uuid="ff1310c2-3961-4074-a6f1-98fb17e29c19"/>
+				<imageExpression><![CDATA["C:\\GMS\\imagens\\LOGO GMS.jpg"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="43" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="555" height="32" uuid="e601d0ad-50a2-481b-8de8-de14b0313133"/>
+				<textElement textAlignment="Center">
+					<font size="24" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CERTIFICADO]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="395" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="555" height="26" uuid="a2a8638c-80e4-42a6-ab6c-f30e59ec70a1"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nome_aluno}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="13" y="39" width="112" height="20" uuid="32528c37-9233-4a14-b7b7-9522fc883fe9"/>
+				<text><![CDATA[Aprendiz portador do RG]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="125" y="39" width="56" height="20" uuid="4db98663-433c-460f-abb5-01854e1b4735"/>
+				<textFieldExpression><![CDATA[$F{rg_aluno}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="181" y="39" width="352" height="20" uuid="90d08057-4256-403f-bd51-097f7a7277dd"/>
+				<text><![CDATA[, participou do PROGRAMA DE APRENDIZAGEM ministrado por esta]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="13" y="59" width="112" height="20" uuid="0e049b83-1646-4569-8e0b-3170f671bdd8"/>
+				<text><![CDATA[instituição no período de]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="248" y="59" width="285" height="20" uuid="3ff3f184-3acc-4cc9-86d7-baec7d7f1a7f"/>
+				<text><![CDATA[com formação teórica e prática sobre o mundo do trabalho]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="13" y="79" width="134" height="20" uuid="1aa027e1-c5fc-4e42-902c-a4791927fd18"/>
+				<text><![CDATA[exercendo as atividades de:]]></text>
+			</staticText>
+			<image>
+				<reportElement x="0" y="220" width="555" height="117" uuid="9e4b73f1-eb1f-4c3b-907c-448c3efafa1d"/>
+				<imageExpression><![CDATA["C:\\GMS\\imagens\\certificadoAprendiz.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="46" y="206" width="121" height="20" uuid="469f1855-c50b-45bf-a256-5c2e3d313332"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Alessandra Silva Gonçalves]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="46" y="220" width="121" height="20" uuid="cbc0dc66-1ce9-471a-9145-3d410fc140c8"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Coordenadora Pedagógica]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="415" y="206" width="100" height="20" uuid="7d0a89b5-d969-4a68-ace7-84a299435df5"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Natal José Francisco]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="406" y="220" width="127" height="20" uuid="d73423cf-b678-4487-9dd0-073dc0926315"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Presidente da Diretoria Executiva]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="181" y="99" width="178" height="20" uuid="9d0cc415-4617-44ca-84fe-5bc4e5e46cfb"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{curso}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="339" y="99" width="20" height="20" uuid="3af4be40-c127-47b6-bdba-e2530d4cebfc"/>
+				<textFieldExpression><![CDATA[$F{horario}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="345" y="99" width="16" height="20" uuid="4841ca08-4b87-4831-b0f7-1367414dafbf"/>
+				<text><![CDATA[h]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="225" y="119" width="49" height="20" uuid="f178aa6e-3790-4bab-8462-5e33a5a97b4e"/>
+				<textFieldExpression><![CDATA[$F{cbo}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="199" y="119" width="26" height="20" uuid="28c2d01e-5baf-4370-8da7-3a5374e53ae6"/>
+				<text><![CDATA[CBO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="261" y="119" width="100" height="20" uuid="ca7387e6-4869-46f7-8a86-6c66a76ee3c9"/>
+				<text><![CDATA[, na empresa:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="0" y="139" width="555" height="20" uuid="c10843a7-f9a8-4e44-b7d3-67f73b4b0760"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{empresa}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="260" y="160" width="100" height="20" uuid="121b46b3-1d06-491a-b7db-1718240fc876"/>
+				<textFieldExpression><![CDATA[$F{carga_horaria_total}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="160" y="160" width="100" height="20" uuid="5d2c904d-2af3-4669-a674-d0be0f29ced0"/>
+				<textElement textAlignment="Right"/>
+				<text><![CDATA[Totalizando]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="125" y="59" width="56" height="20" uuid="6f3509ea-9f1c-40c7-a512-99b85d65f2a4"/>
+				<textFieldExpression><![CDATA[$F{dt_admissao}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="180" y="59" width="11" height="20" uuid="6bcfd917-7157-40c7-aaa2-6a5015379443"/>
+				<text><![CDATA[a]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="190" y="59" width="58" height="20" uuid="a3ae55c0-5aa0-494c-b719-1f7ad42a3a11"/>
+				<textFieldExpression><![CDATA[$F{dt_rescisao}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="212" y="180" width="39" height="20" uuid="8b2ff559-a49a-4df5-80d0-c8cdd9504b8e"/>
+				<text><![CDATA[Suzano,]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" pattern="">
+				<reportElement x="255" y="180" width="100" height="20" uuid="2a70ff48-0bf8-45d6-b988-75de58156261"/>
+				<textFieldExpression><![CDATA[$F{dt_rescisao}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
+</jasperReport>

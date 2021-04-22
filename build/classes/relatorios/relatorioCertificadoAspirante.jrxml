@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="81de7e86-5208-4488-bb43-67d4bb5004a9">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="96"/>
+	<queryString>
+		<![CDATA[SELECT
+     cad_geral.`id`,
+     cad_geral.`nome_aluno`,
+     cad_geral.`cod_endereco`,
+     cad_geral.`rgm_aluno`,
+     cad_geral.`rg_aluno`,
+     cad_geral.`dt_nascimento`,
+     ca.periodo,
+     ca.data_conclusao,
+     ca.id as id_periodo
+FROM
+      cad_geral cross join periodo_certif_aspirante ca]]>
+	</queryString>
+	<field name="id" class="java.lang.Long">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nome_aluno" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="cod_endereco" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="rgm_aluno" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="rg_aluno" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="dt_nascimento" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="periodo" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="data_conclusao" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="id_periodo" class="java.lang.Integer"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="122" splitType="Stretch">
+			<image>
+				<reportElement x="153" y="0" width="227" height="95" uuid="ff1310c2-3961-4074-a6f1-98fb17e29c19"/>
+				<imageExpression><![CDATA["C:\\GMS\\imagens\\LOGO GMS.jpg"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="0" y="78" width="124" height="44" uuid="0415068c-32fb-4579-b696-9eb5eea41cf3"/>
+				<imageExpression><![CDATA["C:\\GMS\\imagens\\guarda.png"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="0" y="38" width="124" height="44" uuid="0fd87708-9c81-489e-b018-b6ec696cca44"/>
+				<imageExpression><![CDATA["C:\\GMS\\imagens\\guarda.png"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="0" y="0" width="124" height="44" uuid="8945b294-4c3b-458b-a281-9658213aa5cf"/>
+				<imageExpression><![CDATA["C:\\GMS\\imagens\\guarda.png"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="46" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="12" width="555" height="25" uuid="e601d0ad-50a2-481b-8de8-de14b0313133"/>
+				<textElement textAlignment="Center">
+					<font size="18" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CERTIFICADO]]></text>
+			</staticText>
+			<image>
+				<reportElement x="0" y="2" width="124" height="44" uuid="6ef6f9cf-7f0d-4fa7-a54f-ec4ad461685d"/>
+				<imageExpression><![CDATA["C:\\GMS\\imagens\\guarda.png"]]></imageExpression>
+			</image>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="375" splitType="Stretch">
+			<staticText>
+				<reportElement x="118" y="214" width="142" height="17" uuid="cfcfc5c1-86bf-427b-bd90-92828f433355"/>
+				<textElement textAlignment="Center">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Alessandra da Silva Gonçalves]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="380" y="214" width="95" height="17" uuid="bf96bcf0-50cd-45cc-bddf-10f4b6cb65e5"/>
+				<textElement textAlignment="Center">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Natal José Francisco]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="118" y="56" width="77" height="20" uuid="32528c37-9233-4a14-b7b7-9522fc883fe9"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[portador do RG]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="189" y="56" width="65" height="20" uuid="4db98663-433c-460f-abb5-01854e1b4735"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rg_aluno}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="256" y="56" width="249" height="20" uuid="90d08057-4256-403f-bd51-097f7a7277dd"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[concluiu o Curso de Formação Básica,]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="118" y="76" width="238" height="20" uuid="0e049b83-1646-4569-8e0b-3170f671bdd8"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[ministrado por esta instituição no período de]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="118" y="96" width="213" height="20" uuid="0392c755-7ebd-4dc0-ae19-4a5f3fa3c31e"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[com carga horária de 440 horas.]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="357" y="76" width="198" height="20" uuid="2afa46e7-d989-4ecc-8bf2-fa2f34c27657"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{periodo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="149" width="555" height="20" uuid="2b5fada6-fa42-493e-92d9-19ee1cd306aa"/>
+				<textElement textAlignment="Center">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{data_conclusao}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="137" y="227" width="100" height="13" uuid="8f218217-8a2c-426e-97f7-7e157cc14e98"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Coordenadora Pedagógica]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="371" y="227" width="126" height="13" uuid="ed206fc1-8ed6-45a4-b50a-120239ca1d30"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Presidente da Diretoria Executiva]]></text>
+			</staticText>
+			<image>
+				<reportElement x="124" y="248" width="431" height="47" uuid="e34cbffd-bfb0-47f5-b31d-a01f1b240fae"/>
+				<imageExpression><![CDATA["C:\\GMS\\imagens\\bonecos.png"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="0" y="252" width="124" height="44" uuid="05cb5b76-013c-41bd-b264-f2d2ffa2f052"/>
+				<imageExpression><![CDATA["C:\\GMS\\imagens\\guarda.png"]]></imageExpression>
+			</image>
+			<textField>
+				<reportElement x="0" y="0" width="555" height="26" uuid="a2a8638c-80e4-42a6-ab6c-f30e59ec70a1"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nome_aluno}]]></textFieldExpression>
+			</textField>
+			<image>
+				<reportElement x="0" y="208" width="124" height="44" uuid="db81bf41-4ae2-4beb-9eb1-675a2e33440b"/>
+				<imageExpression><![CDATA["C:\\GMS\\imagens\\guarda.png"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="0" y="169" width="124" height="44" uuid="07f2c349-ff47-4f3b-a121-7a612d628719"/>
+				<imageExpression><![CDATA["C:\\GMS\\imagens\\guarda.png"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="0" y="128" width="124" height="44" uuid="30ed5ed1-f85c-4155-bfd2-7cda6748f75d"/>
+				<imageExpression><![CDATA["C:\\GMS\\imagens\\guarda.png"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="0" y="87" width="124" height="44" uuid="37f9cd6c-c9b7-4ec8-ab05-2eb43d216394"/>
+				<imageExpression><![CDATA["C:\\GMS\\imagens\\guarda.png"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="0" y="44" width="124" height="44" uuid="d9db5cda-b07f-4711-8729-3bcba9a04369"/>
+				<imageExpression><![CDATA["C:\\GMS\\imagens\\guarda.png"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="0" y="0" width="124" height="44" uuid="80b3d9bd-6f51-4120-b523-19a552f7524b"/>
+				<imageExpression><![CDATA["C:\\GMS\\imagens\\guarda.png"]]></imageExpression>
+			</image>
+		</band>
+	</columnHeader>
+</jasperReport>

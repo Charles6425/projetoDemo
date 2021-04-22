@@ -1,0 +1,312 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="81de7e86-5208-4488-bb43-67d4bb5004a9">
+	<property name="ireport.zoom" value="2.0"/>
+	<property name="ireport.x" value="748"/>
+	<property name="ireport.y" value="12"/>
+	<queryString>
+		<![CDATA[SELECT
+cad_geral.id,
+cad_geral.dt_nascimento,
+cad_geral.nome_aluno,
+cad_geral.rg_aluno,
+cad_geral.rg_mae,
+cad_geral.rgm_aluno,
+cad_geral.responsavel,
+cad_geral.cod_endereco,
+cad_geral.dt_admissao,
+cad_geral.dt_rescisao,
+cad_geral.int_per1,
+cad_geral.int_per2,
+cad_geral.int_per3,
+cad_sala.descricao as sala,
+cad_turma.descricao as turma,
+ce.id,
+ce.razao ,
+ce.contato ,
+ce.cnpj ,
+curso.curso,
+intensivo.descricao as intensivo,
+h.descricao as tipo_contrato
+
+FROM
+cad_geral left join cad_empresa ce on cad_geral.empresa = ce.id
+left join qual_curso curso on cad_geral.curso = curso.id
+left join cad_sala on cad_geral.sala = cad_sala.id
+left join cad_turma on cad_geral.turma = cad_turma.id
+left join intensivo on cad_geral.intensivo = intensivo.id
+left join horario_trabalhado h on cad_geral.horario = h.id
+]]>
+	</queryString>
+	<field name="id" class="java.lang.Long">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="dt_nascimento" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nome_aluno" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="rg_aluno" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="rg_mae" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="rgm_aluno" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="responsavel" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="cod_endereco" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="dt_admissao" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="dt_rescisao" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="int_per1" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="int_per2" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="int_per3" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="sala" class="java.lang.String"/>
+	<field name="turma" class="java.lang.String"/>
+	<field name="razao" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="contato" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="cnpj" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="curso" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="intensivo" class="java.lang.String"/>
+	<field name="tipo_contrato" class="java.lang.String"/>
+	<variable name="IDADE" class="java.lang.String">
+		<initialValueExpression><![CDATA[$F{dt_nascimento}]]></initialValueExpression>
+	</variable>
+	<title>
+		<band height="144" splitType="Stretch">
+			<image>
+				<reportElement x="0" y="0" width="85" height="30" uuid="ff1310c2-3961-4074-a6f1-98fb17e29c19"/>
+				<imageExpression><![CDATA["C:\\GMS\\imagens\\LOGO GMS.jpg"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="348" y="13" width="134" height="17" uuid="9f2847c7-beff-4164-9e46-ded086f5b995"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[LISTA DE PRESENÇA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="71" width="802" height="72" uuid="1cdefaaf-115d-4c9b-a548-07199cc4a869"/>
+				<text><![CDATA[- Da obrigatoriedade e compromisso em assinar a lista de presença do Curso de Aprendizagem;
+- No caso do esquecimento do registro o aprendiz terá uma semana (1) para apresentar sua justificativa junto ao Educador do dia, mediante atividade apresentada;
+- Do compromisso em justificar minhas ausências pelo e-mail: isaac@gmsuzano.org.br/rh@gmsuzano.org.br, em até 24 horas para evitar possíveis descontos;
+- A declaração inferior ao período de uma hora, não será aceita como abono do dia.
+Informamos que o não umprimento dos itens mencionados acarretará descontos em folha de pagamento.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="51" width="106" height="20" uuid="ff7e25c7-e074-4b24-ba55-619bc2b602fb"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Declaro estar ciente:]]></text>
+			</staticText>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="49" splitType="Stretch">
+			<staticText>
+				<reportElement x="27" y="29" width="26" height="20" uuid="3c06e727-803d-4b0e-bc9f-170c6775f682"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[RGM]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="59" y="29" width="76" height="20" uuid="226dcc24-1859-4fdb-b933-3e353f568799"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[NOME]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement mode="Transparent" x="53" y="29" width="161" height="20" uuid="3b2599ce-3e17-47f4-876e-24dd3adfd090"/>
+			</rectangle>
+			<rectangle>
+				<reportElement mode="Transparent" x="23" y="29" width="30" height="20" uuid="56a460b2-b587-4fef-8631-ccc1f8d09ca1"/>
+			</rectangle>
+			<rectangle>
+				<reportElement mode="Transparent" x="0" y="29" width="23" height="20" uuid="e93d6364-7f39-467d-8db2-804b7c44e9d9"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="214" y="29" width="20" height="20" uuid="3feb2952-8c2a-4914-8b38-3fee305afe46"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[CH]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement mode="Transparent" x="214" y="29" width="20" height="20" uuid="c3ef5a71-4ae6-49a2-9ba1-6eef038830e4"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="238" y="29" width="76" height="20" uuid="b67611c8-76d5-4486-bb3f-19a33045964a"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[EMPRESA]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement mode="Transparent" x="234" y="29" width="157" height="20" uuid="3aecb2cc-0516-44b2-9e13-c54341bafa61"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="395" y="29" width="46" height="20" uuid="dfa38f67-d180-4378-8126-da0bf6f1cddb"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ADMISSÃO]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement mode="Transparent" x="391" y="29" width="50" height="20" uuid="59e3ab9a-5fef-492c-8d7f-965d66a81a19"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="445" y="29" width="43" height="20" uuid="74dbde72-cd4f-4976-8660-bd3edded7a58"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[RESCISÃO]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement mode="Transparent" x="441" y="29" width="47" height="20" uuid="815c91a1-1ec7-4bad-a175-3be5213fd76e"/>
+			</rectangle>
+			<rectangle>
+				<reportElement mode="Transparent" x="488" y="29" width="47" height="20" uuid="7958b08f-bc5e-4773-bb61-79f7fb5e1269"/>
+			</rectangle>
+			<rectangle>
+				<reportElement mode="Transparent" x="535" y="29" width="47" height="20" uuid="9556bc46-17d7-4441-b189-b850c32260ad"/>
+			</rectangle>
+			<rectangle>
+				<reportElement mode="Transparent" x="582" y="29" width="47" height="20" uuid="74d2f3af-18a2-417a-b154-b81391450f72"/>
+			</rectangle>
+			<rectangle>
+				<reportElement mode="Transparent" x="629" y="29" width="47" height="20" uuid="917c0685-70b2-4e0c-acd5-4f90d7d2c35c"/>
+			</rectangle>
+			<rectangle>
+				<reportElement mode="Transparent" x="676" y="29" width="47" height="20" uuid="4677e21d-7506-4697-a4f8-90c267d87c9b"/>
+			</rectangle>
+			<rectangle>
+				<reportElement mode="Transparent" x="488" y="9" width="235" height="20" uuid="8ee9df37-45a9-4a0d-8b96-9326caca3670"/>
+			</rectangle>
+			<textField pattern="MMMMM  -  yyyy">
+				<reportElement x="488" y="9" width="235" height="19" uuid="2eef5eb0-8d67-4ee5-8de0-6a29958eb2e0"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM">
+				<reportElement x="488" y="29" width="47" height="20" uuid="dee00e81-6074-4745-9289-ba98eaf5d8d2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="22">
+			<rectangle>
+				<reportElement mode="Transparent" x="441" y="0" width="47" height="20" uuid="24160cf4-4be3-40f5-b4b9-739e43945350"/>
+			</rectangle>
+			<rectangle>
+				<reportElement mode="Transparent" x="391" y="0" width="50" height="20" uuid="c9ab8abe-77b3-431c-9117-7c792088c402"/>
+			</rectangle>
+			<textField>
+				<reportElement x="395" y="0" width="46" height="20" uuid="e711841f-28b7-404f-aa2a-4879b2315bc7"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{dt_admissao}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="441" y="0" width="47" height="20" uuid="137da5c3-8f4b-485d-9d8b-b50bc1cc4b69"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{dt_rescisao}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="214" y="0" width="20" height="20" uuid="caa5341e-369e-42fd-9d49-006782958c92"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tipo_contrato}]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement mode="Transparent" x="53" y="0" width="161" height="20" uuid="17126041-92ae-40b3-9342-8a75ea3b9f99"/>
+			</rectangle>
+			<textField>
+				<reportElement x="238" y="0" width="153" height="20" uuid="0dd3c3dd-07c3-42fd-aa71-5e8eb2bf4073"/>
+				<textElement verticalAlignment="Middle">
+					<font size="7" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{razao}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="27" y="0" width="26" height="20" uuid="2de821be-7dcc-4e8f-8889-fc20b318a627"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rgm_aluno}]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement mode="Transparent" x="23" y="0" width="30" height="20" uuid="f1672c64-9fc9-449d-94ee-4e4931a51ae0"/>
+			</rectangle>
+			<rectangle>
+				<reportElement mode="Transparent" x="214" y="0" width="20" height="20" uuid="a939e543-ef4d-48a8-a6d2-7dbeb27b7107"/>
+			</rectangle>
+			<rectangle>
+				<reportElement mode="Transparent" x="234" y="0" width="157" height="20" uuid="37b73b46-fa42-4134-82c4-17bc35c0156e"/>
+			</rectangle>
+			<textField>
+				<reportElement x="59" y="0" width="155" height="20" uuid="a2a8638c-80e4-42a6-ab6c-f30e59ec70a1"/>
+				<textElement verticalAlignment="Middle">
+					<font size="7" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nome_aluno}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="0" width="23" height="20" uuid="531acea6-528a-420e-8030-b0515299dc44"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{id}]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement mode="Transparent" x="0" y="0" width="23" height="20" uuid="4e79e94d-f0bc-484b-9285-e91feca8c487"/>
+			</rectangle>
+			<rectangle>
+				<reportElement mode="Transparent" x="488" y="0" width="47" height="20" uuid="6eec8c30-49df-489b-86f7-8c5aff8133db"/>
+			</rectangle>
+			<rectangle>
+				<reportElement mode="Transparent" x="629" y="0" width="47" height="20" uuid="1e0ec427-ee1c-4865-b27d-d2eb113187d6"/>
+			</rectangle>
+			<rectangle>
+				<reportElement mode="Transparent" x="535" y="0" width="47" height="20" uuid="8e10647d-f8fb-4ca3-bd56-169e19538c3c"/>
+			</rectangle>
+			<rectangle>
+				<reportElement mode="Transparent" x="582" y="0" width="47" height="20" uuid="4290218d-03bd-490b-bb39-e2b756f2332e"/>
+			</rectangle>
+			<rectangle>
+				<reportElement mode="Transparent" x="676" y="0" width="47" height="20" uuid="50881cf4-0685-46d0-b0ae-87f1689044da"/>
+			</rectangle>
+		</band>
+	</detail>
+</jasperReport>

@@ -1,0 +1,418 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="81de7e86-5208-4488-bb43-67d4bb5004a9">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="58"/>
+	<queryString>
+		<![CDATA[SELECT
+cad_geral.id,
+cad_geral.dt_nascimento,
+cad_geral.nome_aluno,
+cad_geral.rg_aluno,
+cad_geral.rg_mae,
+cad_geral.rgm_aluno,
+cad_geral.responsavel,
+cad_geral.cod_endereco,
+entrevista_aluno.id ,
+entrevista_aluno.id_aluno,
+entrevista_aluno.id_empresa ,
+entrevista_aluno.data_entrevista ,
+entrevista_aluno.horario_entrevista,
+ce.id,
+ce.razao ,
+ce.contato ,
+ce.cnpj ,
+ce.cod_endereco as cod_end_empresa ,
+ce.numero as num_empresa,
+ce.complemento,
+cad_end.end_codigo ,
+cad_end.end_cep ,
+cad_end.end_logradouro rua_aluno,
+cad_end.end_bairro as bairro_aluno ,
+cad_end.end_cidade as cid_aluno,
+cad_end.end_uf as uf_aluno,
+cad_end1.end_codigo ,
+cad_end1.end_cep ,
+cad_end1.end_logradouro rua_emp,
+cad_end1.end_bairro as bairro_emp,
+cad_end1.end_cidade as cid_emp,
+cad_end1.end_uf as uf_emp,
+h.descricao as horario,
+curso.curso,
+cbo.descricao as cbo
+FROM
+cad_geral LEFT JOIN entrevista_aluno on cad_geral.id = entrevista_aluno.id_aluno
+LEFT join cad_empresa ce on ce.id = entrevista_aluno.id_empresa
+LEFT join cad_endereco cad_end on cad_end.end_codigo = cad_geral.cod_endereco
+LEFT join cad_endereco cad_end1 on cad_end1.end_codigo = ce.cod_endereco
+LEFT JOIN horario h on cad_geral.horario = h.id
+left join qual_curso curso on cad_geral.curso = curso.id
+left join cad_cbo cbo on cad_geral.cbo = cbo.id]]>
+	</queryString>
+	<field name="id" class="java.lang.Long">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="dt_nascimento" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nome_aluno" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="rg_aluno" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="rg_mae" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="rgm_aluno" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="responsavel" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="cod_endereco" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="id_aluno" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="id_empresa" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="data_entrevista" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="horario_entrevista" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="razao" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="contato" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="cnpj" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="cod_end_empresa" class="java.lang.Integer"/>
+	<field name="num_empresa" class="java.lang.String"/>
+	<field name="complemento" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="end_codigo" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="end_cep" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="rua_aluno" class="java.lang.String"/>
+	<field name="bairro_aluno" class="java.lang.String"/>
+	<field name="cid_aluno" class="java.lang.String"/>
+	<field name="uf_aluno" class="java.lang.String"/>
+	<field name="rua_emp" class="java.lang.String"/>
+	<field name="bairro_emp" class="java.lang.String"/>
+	<field name="cid_emp" class="java.lang.String"/>
+	<field name="uf_emp" class="java.lang.String"/>
+	<field name="horario" class="java.lang.String"/>
+	<field name="curso" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="cbo" class="java.lang.String"/>
+	<variable name="IDADE" class="java.lang.String">
+		<initialValueExpression><![CDATA[$F{dt_nascimento}]]></initialValueExpression>
+	</variable>
+	<title>
+		<band height="40" splitType="Stretch">
+			<image>
+				<reportElement x="0" y="0" width="108" height="40" uuid="ff1310c2-3961-4074-a6f1-98fb17e29c19"/>
+				<imageExpression><![CDATA["C:\\GMS\\imagens\\LOGO GMS.jpg"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="41" splitType="Stretch">
+			<staticText>
+				<reportElement x="56" y="0" width="437" height="41" uuid="e601d0ad-50a2-481b-8de8-de14b0313133"/>
+				<textElement textAlignment="Center">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[FICHA DE MATRÍCULA NO CURSO DE APRENDIZAGEM
+REGISTRO EMPRESA]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="663" splitType="Stretch">
+			<textField>
+				<reportElement x="180" y="20" width="268" height="20" uuid="a2a8638c-80e4-42a6-ab6c-f30e59ec70a1"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nome_aluno}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="469" y="20" width="86" height="20" uuid="0dd3c3dd-07c3-42fd-aa71-5e8eb2bf4073"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rg_aluno}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="32" y="20" width="82" height="20" uuid="62af6a37-60c2-432e-b755-ef49e5de8978"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rgm_aluno}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="20" width="32" height="20" uuid="e4f44344-85f1-42bb-b928-fda7a6b3de6d"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[RGM]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="132" y="20" width="48" height="20" uuid="03347a51-6044-4456-89b3-7e86aa59a9d5"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[NOME]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="448" y="20" width="21" height="20" uuid="20f3b5b5-fdeb-4467-9431-616600e08614"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[RG]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="318" width="289" height="172" uuid="8d4ce5aa-8774-487f-bbf9-68dd2dc2080d"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[- Educação Fiscale Contábil (30h);
+- Saúde e Qualidade de Vida(30h);
+- Comunicação Oral e Escrita(30h);
+- Educação para o Consumo(24h);
+- Empreendedorismo & Geração de Renda (24h);
+- Gestão de Pessoas(24h);
+- Organizaçãopara o Trabalho (24h);
+- Identidade Culturale Educ. em Direitos Humanos(24h);          
+- Horas Complementares (22h);
+- Inclusão Digital (30h);]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="296" y="428" width="217" height="62" uuid="97a36fb7-a5e2-4901-8067-bcd6a43f9453"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[- Empreendedorismo (36h);
+- Projeto Integrado (36h);
+- Teoria Geral de Administração(30h).]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="296" y="343" width="217" height="65" uuid="a9ecc869-24f8-499c-8915-0c2a366df404"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[- Raciocínio Lógico Matemático (30h);
+- Segurança no Trabalho(20h);
+- Meio Ambiente X Responsábilidade Social (24h).]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="306" y="408" width="137" height="20" uuid="253a84d5-fecc-47b4-a726-9d1d4f80bc19"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Conteúdo Específico:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="6" y="299" width="100" height="20" uuid="9af3361f-914f-4231-9ca6-dac978f7cfd2"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Conteúdo básico]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="237" y="284" width="100" height="20" uuid="f422de58-ee27-4fc7-a345-a41ea024c811"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[MÓDULOS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="47" width="180" height="20" uuid="fda7bbdf-5364-4c86-99eb-e050093f483f"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Instituição Qualificadora:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="198" y="48" width="141" height="20" uuid="c283b380-690b-43c2-9ad6-08bd87717ea0"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Guarda Mirim de Suzano]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="114" y="182" width="399" height="103" uuid="5c6945fa-fd52-4182-a884-b0920533826a"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[Promover integração entre aprendizes e educadores. Comunicar com clareza por meio de linguagem verbal, escrita e digital no ambiente de estudo, trabalho e sociedade. Desenvolver raciocínio logico-matemático e a capacidade de interpretação e análise estatísticas. Executar serviço de apoio e desenvolver competências e a habilidades necessárias para a execução de serviços gerais de escritório, arquivo, almoxarife e contínuo (office-boy). Conscientizar sobre seus deveres e direitos de cidadão e conhecer as leis trabalhistas e previdenciárias. Constatar que uma boa qualidade de vida depende de: observar princípios éticos, saúde e preservação do meio ambiente.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="218" width="106" height="20" uuid="9c697030-35a9-462c-b535-17c0b89ea720"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Objetivo Geral:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="6" y="101" width="151" height="20" uuid="2c885a08-5991-4b67-8d21-6931bfd6e16c"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[CURSO NÚMERO: 42373]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="167" y="101" width="333" height="20" uuid="995ba81b-f544-414e-a26d-760d60299b80"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ARCO OCUPACIONAL DE SERVIÇOS ADMINISTRATIVOS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="72" width="100" height="20" uuid="abf02124-078b-4225-a58e-d11a13692020"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[EMPRESA:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="490" width="132" height="20" uuid="e502c351-ccd6-444f-93c2-e19c497b035b"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Carga Horária Diária:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="180" y="490" width="127" height="20" uuid="c5f2ffbc-9f3a-44bc-9b5f-9282903360cb"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Dia Atividade Teórica:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="180" y="526" width="64" height="20" uuid="6e756b1d-0dde-4c8a-a69c-2508918c5abe"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[PERÍODO:]]></text>
+			</staticText>
+			<line>
+				<reportElement x="6" y="580" width="192" height="1" uuid="af399a52-ab36-46f4-ac33-a54d9ea21c7d"/>
+			</line>
+			<line>
+				<reportElement x="339" y="579" width="186" height="1" uuid="72c77595-be74-4fc8-83b1-733b3d9af043"/>
+			</line>
+			<line>
+				<reportElement x="2" y="636" width="199" height="1" uuid="e5ee4b40-c1fb-46a9-ba89-d1d8e6eeba9b"/>
+			</line>
+			<staticText>
+				<reportElement x="64" y="581" width="68" height="20" uuid="f566fe02-70a6-4d51-9317-b3afc2403445"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Aprendiz]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="32" y="637" width="146" height="20" uuid="166a7ab7-8898-41b8-9ab4-5b6b71ae78b7"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Guarda Mirim de Suzano]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="382" y="581" width="100" height="20" uuid="4645d881-c179-4906-a4af-04c5f3eba9e3"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Responsável]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="408" y="490" width="40" height="20" uuid="3033372d-a297-49ad-abdf-86244ffc52a9"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Início]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="393" y="526" width="61" height="20" uuid="ef468e0a-d46b-4815-bd28-cc68d69ab0af"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Térrmino]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="348" y="72" width="52" height="20" uuid="9784a7d8-d215-4d1c-8181-3d87af232413"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CNPJ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="555" height="20" backcolor="#CCCCCC" uuid="999d2f51-b488-4736-955d-e5d6f7512fc2"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Dados do Aprendiz:]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="94" width="555" height="1" uuid="2e93aa5a-3527-4e54-a82c-d8933ff32566"/>
+			</line>
+			<line>
+				<reportElement x="0" y="121" width="555" height="1" uuid="f7f4720c-c7e4-4870-99f7-62745ee0e559"/>
+			</line>
+			<staticText>
+				<reportElement x="6" y="141" width="74" height="20" uuid="d11e7cc5-f851-4e7b-960c-c71bebd6ef47"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Ocupações:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="167" y="122" width="226" height="54" uuid="d33957aa-d43e-4bab-a605-4712ac622b19"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Almoxarife
+Arquivista / Arquivador
+Auxiliar de Escritório / Administrativo
+Contínuo / Office-Boy / Office-Girl]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="175" width="555" height="1" uuid="099a3839-210f-4ac6-82db-9fbd5b4da9f6"/>
+			</line>
+			<line>
+				<reportElement x="337" y="637" width="186" height="1" uuid="9ee8d416-a58d-4ade-b58d-a7895b7bc41b"/>
+			</line>
+			<staticText>
+				<reportElement x="393" y="638" width="100" height="20" uuid="a3ff5aee-17c9-4f48-8c6b-e9e7e1b1bba4"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[EMPRESA]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<pageFooter>
+		<band height="50">
+			<staticText>
+				<reportElement x="0" y="0" width="555" height="40" uuid="e96c621d-d725-4407-b486-15ae2ceeef9b"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Guarda Mirim de Suzano
+www.gmsuzano.org.br
+Rua Shimpei Sayama nº 304- Jd Santa Lucia - Fone/Fax (11) 4748-4911 - 4748-6477]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+</jasperReport>
